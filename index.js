@@ -79,7 +79,7 @@ if(message.content === '!톰 한조 좌') {
 if(message.content === '!톰 칸토 목록') {
     message.reply('-준비중-');
   }
-  if(message.content == '!help') {
+if(message.content == '!help') {
     let helpImg = 'https://cdn.discordapp.com/attachments/742167408646684733/742210889301622954/1.png';
     let commandList = [
       {name: '!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
@@ -102,7 +102,7 @@ if(message.content === '!톰 칸토 목록') {
 
     message.channel.send(embed)
   }
-  if(message.content == '!도움') {
+if(message.content == '!도움') {
     let helpImg = 'https://cdn.discordapp.com/attachments/742167408646684733/742210889301622954/1.png';
     let commandList = [
       {name: '!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
