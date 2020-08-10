@@ -76,7 +76,33 @@ if(message.content === '!톰 파라 좌') {
 if(message.content === '!톰 한조 좌') {
     message.reply('7X83OB ( 좌클 + 보조키 ) KEY 마우스 보조키 (가속도 3 ) 정확도 보안 완료');
   }
+if(message.content === '!톰 칸토 목록') {
+    message.reply('-준비중-');
+  }
   if(message.content == '!help') {
+    let helpImg = 'https://cdn.discordapp.com/attachments/742167408646684733/742210889301622954/1.png';
+    let commandList = [
+      {name: '!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
+      {name: '!톰 (영웅) (좌,우)', desc: '입력한 영웅의 칸토 값을 봅니다'},
+      {name: '!청소 (숫자)', desc: '숫자 만큼 채팅을 삭제합니다'},
+      {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
+    ];
+    let commandStr = '';
+    let embed = new Discord.RichEmbed()
+      .setAuthor('KANTO BOT 도움말', helpImg)
+      .setColor('#186de6')
+      .setFooter(`KANTO BOT`)
+      .setTimestamp()
+    
+    commandList.forEach(x => {
+      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+    });
+
+    embed.addField('Commands: ', commandStr);
+
+    message.channel.send(embed)
+  }
+  if(message.content == '!도움') {
     let helpImg = 'https://cdn.discordapp.com/attachments/742167408646684733/742210889301622954/1.png';
     let commandList = [
       {name: '!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
