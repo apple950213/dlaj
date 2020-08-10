@@ -79,7 +79,32 @@ if(message.content === '!톰 한조 좌') {
 if(message.content === '!톰 칸토 목록') {
     message.reply('-준비중-');
   }
-  
+if(message.content === '!도움') {
+  message.channel.send(embed)
+  }
+if(message.content == '!help') {
+    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+    let commandList = [
+      {name: '!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
+      {name: '!톰 (영웅) (좌,우)', desc: '입력한 영웅의 칸토 값을 봅니다'},
+      {name: '!청소 (숫자)', desc: '숫자 만큼 채팅을 삭제합니다'},
+      {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
+    ];
+    let commandStr = '';
+    let embed = new Discord.RichEmbed()
+      .setAuthor('KANTO BOT 도움말', helpImg)
+      .setColor('#186de6')
+      .setFooter(`KANTO BOT`)
+      .setTimestamp()
+    
+    commandList.forEach(x => {
+      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+    });
+
+    embed.addField('Commands: ', commandStr);
+
+    message.channel.send(embed)
+  }
   if(message.content.startsWith('!전체공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
@@ -177,5 +202,17 @@ function checkPermission(message) {
     return false;
   }
 }
+
+function changeCommandStringLength(str, limitLen = 8) {
+  let tmp = str;
+  limitLen -= tmp.length;
+
+  for(let i=0;i<limitLen;i++) {
+      tmp += ' ';
+  }
+
+  return tmp;
+}
+
 
 client.login(token);
