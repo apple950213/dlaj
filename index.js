@@ -8,7 +8,7 @@ client.on('ready', () => {
 
 client.on('message', (message) => {
   if(message.content === '!톰 겐지 우') {
-    message.reply('46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값');
+    message.reply('```diff + 46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값```');
   }
 if(message.content === '!톰 겐지 좌') {
     message.reply('7R8LDX ( 좌클 값 ) KEY 마우스 보조키 ( 가속도 3.3 ) 좌클릭 정확도 증가');
@@ -76,12 +76,40 @@ if(message.content === '!톰 파라 좌') {
 if(message.content === '!톰 한조 좌') {
     message.reply('7X83OB ( 좌클 + 보조키 ) KEY 마우스 보조키 (가속도 3 ) 정확도 보안 완료');
   }
+if(message.content === '!요요 겐지') {
+    message.reply('LW8A88  ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.3 ) 정확도 증가');
+  }
+if(message.content === '!요요 맥크리') {
+    message.reply('L5DCEC ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.4 ) 정확도 증가');
+  }
+if(message.content === '!요요 맥') {
+    message.reply('RTOI27 ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.4 ) 정확도 증가');
+  }
+if(message.content === '!요요 트레이서') {
+    message.reply('TV0E9C  ( 좌클릭 값 ) KEY 마우스 좌클릭  정확도 증가');
+  }
+if(message.content === '!요요 트레이서 궁') {
+    message.reply('SOYY1T  ( 궁극기 값 ) KEY 마우스 보조키 (가속도 3) 정확도 증가');
+  }
+if(message.content === '!요요 솜브라') {
+    message.reply('2AL515  ( 좌클릭 값 ) KEY 마우스 좌클릭 ( 가속도 3.4 ) 정확도 증가');
+  }
+if(message.content === '!요요 애쉬') {
+    message.reply('7KXYTE  ( 좌클릭 값 ) KEY 마우스 좌클릭 ( 가속도 2.7 ) 정확도 증가');
+  }
+if(message.content === '!요요 시메트라') {
+    message.reply('N5Y891  ( 좌클릭 값 ) KEY 마우스 좌클릭 정확도 증가');
+  }
+if(message.content === '!요요 위도우') {
+    message.reply('OOUR38  ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 0.5 ) 정확도 증가');
+  }
+if(message.content === '!요요 바스티온') {
+    message.reply('UAS6AS  ( 좌클릭 값 ) KEY 마우스 보조키  정확도 증가');
+  }
 if(message.content === '!톰 칸토 목록') {
-    message.reply('-준비중-');
+    message.reply('```DIFF\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌\n```\n```DIFF\n- 맥크리 좌 / 메이 우 / 바스 좌\n```\n```MD\n# 솔저 좌,우 / 시메 좌, 시메트라 좌\n```\n```CS\n# 애쉬 좌 / 에코 좌,우 / 정크 좌\n```\n```FIX\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌 \n```');
   }
-if(message.content === '!도움') {
-  message.channel.send(embed)
-  }
+
 if(message.content == '!help') {
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
     let commandList = [
