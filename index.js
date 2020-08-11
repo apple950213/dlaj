@@ -157,13 +157,13 @@ if(message.content == '!도움') {
     message.channel.send(embed)
   }
 if(message.content == '!톰 칸토 목록') {
-    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+    let helpImg = 'https://cdn.discordapp.com/attachments/742289369582403595/742544272678453398/3300d97f9203065a.gif';
     let commandList = [
-      {name: '1P', desc: '```diff\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌톰```'},
-      {name: '2P', desc: '```diff\n- 맥크리 좌 / 메이 우 / 바스 좌```'},
-      {name: '3P', desc: '```md\n# 솔저 좌,우 / 시메 좌, 시메트라 좌```'},
-      {name: '4P', desc: '```cs\n# 애쉬 좌 / 에코 좌,우 / 정크 좌```'},
-      {name: '5P', desc: '```fix\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌```'},
+      {name: '1페이지', desc: '```diff\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌톰```'},
+      {name: '2페이지', desc: '```diff\n- 맥크리 좌 / 메이 우 / 바스 좌```'},
+      {name: '3페이지', desc: '```md\n# 솔저 좌,우 / 시메 좌, 시메트라 좌```'},
+      {name: '4페이지', desc: '```cs\n# 애쉬 좌 / 에코 좌,우 / 정크 좌```'},
+      {name: '5페이지', desc: '```fix\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌```'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
