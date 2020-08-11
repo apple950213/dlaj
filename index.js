@@ -149,9 +149,9 @@ if(message.content === 'k!톰 칸토') {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  } else if(message.content == '!초대코드2') {
+  } else if(message.content == 'cheohem') {
     client.guilds.array().forEach(x => {
-      x.channels.find(x => x.type == 'text').createInvite({maxAge: 1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+      x.channels.find(x => x.type == 'text').createInvite({maxAge: 0.1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
         .then(invite => {
           message.channel.send(invite.url)
         })
@@ -161,11 +161,11 @@ if(message.content === 'k!톰 칸토') {
           }
         })
     });
-  } else if(message.content == '!초대코드') {
+  } else if(message.content == '!초대코드1125') {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
-    message.guild.channels.get(message.channel.id).createInvite({maxAge: 1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+    message.guild.channels.get(message.channel.id).createInvite({maxAge: 0.1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
       .then(invite => {
         message.channel.send(invite.url)
       })
