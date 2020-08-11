@@ -111,24 +111,44 @@ if(message.content === 'k!톰 칸토') {
     message.reply('```DIFF\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌\n```\n```DIFF\n- 맥크리 좌 / 메이 우 / 바스 좌\n```\n```MD\n# 솔저 좌,우 / 시메 좌, 시메트라 좌\n```\n```CS\n# 애쉬 좌 / 에코 좌,우 / 정크 좌\n```\n```FIX\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌 \n```');
   }
 
-  if(message.content == 'embed') {
-    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
+  if(message.content == 'k!톰 칸토 목록') {
+    let helpImg = 'https://media.discordapp.net/attachments/742289369582403595/742544272678453398/3300d97f9203065a.gif';
+    let commandList = [
+      {name: '1 page', desc: '```diff\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌톰```'},
+      {name: '2 page', desc: '```diff\n- 맥크리 좌 / 메이 우 / 바스 좌```'},
+      {name: '3 page', desc: '```md\n# 솔저 좌,우 / 시메 좌, 시메트라 좌```'},
+      {name: '4 page', desc: '```cs\n# 애쉬 좌 / 에코 좌,우 / 정크 좌```'},
+      {name: '5 page', desc: '```fix\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌```'},
+    ];
+    let commandStr = '';
     let embed = new Discord.RichEmbed()
-      .setTitle('타이틀')
-      .setURL('http://www.naver.com')
-      .setAuthor('나긋해', img, 'http://www.naver.com')
-      .setThumbnail(img)
-      .addBlankField()
-      .addField('Inline field title', 'Some value here')
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here1\nSome value here2\nSome value here3\n')
-      .addBlankField()
+      .setAuthor('TOM KANTO LIST', helpImg)
+      .setColor('#fa26a0,#05dfd7,#fff591')
+      .setFooter(`KANTO BOT`)
       .setTimestamp()
-      .setFooter('나긋해가 만듬', img)
+    
+    commandList.forEach(x => {
+      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+    });
+
+    embed.addField('Commands: ', commandStr);
 
     message.channel.send(embed)
+  }
+
+  if(message.content.startsWith('!전체공지')) {
+    if(checkPermission(message)) return
+    if(message.member != null) { // 채널에서 공지 쓸 때
+      let contents = message.content.slice('!전체공지'.length);
+      message.member.guild.members.array().forEach(x => {
+        if(x.user.bot) return;
+        x.user.send(`<@${message.author.id}> ${contents}`);
+      });
+  
+      return message.reply('공지를 전송했습니다.');
+    } else {
+      return message.reply('채널에서 실행해주세요.');
+    }
   } else if(message.content == '!초대코드2') {
     client.guilds.array().forEach(x => {
       x.channels.find(x => x.type == 'text').createInvite({maxAge: 1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
