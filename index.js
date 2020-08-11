@@ -8,113 +8,133 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-  if(message.content === 'k!톰 겐지 우') {
+  const guild = member.guild;
+  const newUser = member.user;
+  const welcomeChannel = guild.channels.find(channel => channel.name == welcomeChannelName);
+    if(message.content === 'k!톰 겐지') {
     message.reply('```diff\n+ 46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값```');
   }
-if(message.content === 'k!톰 겐지 좌') {
+    if(message.content === 'k!톰 겐지') {
     message.reply('7R8LDX ( 좌클 값 ) KEY 마우스 보조키 ( 가속도 3.3 ) 좌클릭 정확도 증가');
   }
-if(message.content === 'k!톰 리퍼 좌') {
+    if(message.content === 'k!톰 리퍼') {
     message.reply('O5ULAA ( 좌클릭 값 ) KEY 마우스 좌클');
   }
-if(message.content === 'k!톰 맥 좌') {
+    if(message.content === 'k!톰 맥') {
     message.reply('RTOI27 ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.4 ) 정확도 증가');
   }
-if(message.content === 'k!톰 맥크리 좌') {
+   if(message.content === 'k!톰 맥크리') {
     message.reply('RTOI27 ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.4 ) 정확도 증가');
   }
-if(message.content === 'k!톰 메이 우') {
+    if(message.content === 'k!톰 메이') {
     message.reply('RTOI27 ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.4 ) 정확도 증가');
   }
-if(message.content === 'k!톰 바스 좌') {
+    if(message.content === 'k!톰 바스') {
     message.reply('3Z3AE3 ( 좌클릭 값 ) KEY 마우스 좌클릭 / 너무 스무스 해진 에임');
   }
-if(message.content === 'k!톰 솔저 우') {
+    if(message.content === 'k!톰 솔저') {
     message.reply('XYC99Q ( 우클릭 값 ) KEY 마우스 보조키 ( 가속도 2.6 )');
   }
-if(message.content === 'k!톰 솔저 좌') {
+    if(message.content === 'k!톰 솔저') {
     message.reply('UCCSBM ( 좌클릭 값 ) KEY 마우스 좌클릭');
   }
-if(message.content === 'k!톰 솜브라 좌') {
+    if(message.content === 'k!톰 솜브라') {
     message.reply('SALVW7 ( 좌클릭 값 ) KEY 마우스 좌클릭 / 더욱 스무스 해진 에임');
   }
-if(message.content === 'k!톰 시메 좌') {
+    if(message.content === 'k!톰 시메') {
     message.reply('N5Y891 ( 좌클릭 값 ) KEY 마우스 좌클릭 ');
   }
-if(message.content === 'k!톰 시메트라 좌') {
+    if(message.content === 'k!톰 시메트라') {
     message.reply('N5Y891 ( 좌클릭 값 ) KEY 마우스 좌클릭 ');
   }
-if(message.content === 'k!톰 애쉬 좌') {
+    if(message.content === 'k!톰 애쉬') {
     message.reply('4F16QB ( 좌클릭 값 ) KEY 마우스 좌클릭 ( 가속도 2.3 ) 약간 아쉬워졌지만 스무스 해짐');
   }
-if(message.content === 'k!톰 에코 우') {
+    if(message.content === 'k!톰 에코') {
     message.reply('J6227R ( 우클릭 값 ) KEY 마우스 우클릭 ( 가속도 2.5 )');
   }
-if(message.content === 'k!톰 에코 좌') {
+    if(message.content === 'k!톰 에코') {
     message.reply('XY2Q1U ( 좌클릭 값 ) KEY 마우스 좌클릭 ( 가속도 2.7 )');
   }
-if(message.content === 'k!톰 위도우 좌') {
+    if(message.content === 'k!톰 위도우') {
     message.reply('HO8ONV ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 2.7 )');
   }
-if(message.content === 'k!톰 정크 좌') {
+    if(message.content === 'k!톰 정크') {
     message.reply(' M3LY1A ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3 ) 가까이 있는적 보조키 사용');
   }
-if(message.content === 'k!톰 트레 좌') {
+    if(message.content === 'k!톰 트레') {
     message.reply('14C2IV( 좌클릭 값 ) KEY 마우스 좌클릭 / 더욱 스무스해진 에임');
   }
-if(message.content === 'k!톰 트레 궁') {
+    if(message.content === 'k!톰 트레') {
     message.reply('49H68O ( 궁극기 ) KEY 마우스 보조키 (가속도 3 ) 부착 확률 증가');
   }
-if(message.content === 'k!톰 트레이서 좌') {
+    if(message.content === 'k!톰 트레이서') {
     message.reply('14C2IV( 좌클릭 값 ) KEY 마우스 좌클릭 / 더욱 스무스해진 에임');
   }
-if(message.content === 'k!톰 트레이서 궁') {
+    if(message.content === 'k!톰 트레이서') {
     message.reply('49H68O ( 궁극기 ) KEY 마우스 보조키 (가속도 3 ) 부착 확률 증가');
   }
-if(message.content === 'k!톰 파라 좌') {
+    if(message.content === 'k!톰 파라') {
     message.reply('QUN9DN ( 좌클릭 값 ) KEY 마우스 좌클릭 ( 가속도 3.5 ) 정확도 증가');
   }
-if(message.content === 'k!톰 한조 좌') {
+    if(message.content === 'k!톰 한조') {
     message.reply('7X83OB ( 좌클 + 보조키 ) KEY 마우스 보조키 (가속도 3 ) 정확도 보안 완료');
   }
-if(message.content === 'k!요요 겐지') {
+    if(message.content === 'k!요요 겐지') {
     message.reply('LW8A88  ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.3 ) 정확도 증가');
   }
-if(message.content === 'k!요요 맥크리') {
+    if(message.content === 'k!요요 맥크리') {
     message.reply('L5DCEC ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.4 ) 정확도 증가');
   }
-if(message.content === 'k!요요 맥') {
+    if(message.content === 'k!요요 맥') {
     message.reply('RTOI27 ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 3.4 ) 정확도 증가');
   }
-if(message.content === 'k!요요 트레이서') {
+    if(message.content === 'k!요요 트레이서') {
     message.reply('TV0E9C  ( 좌클릭 값 ) KEY 마우스 좌클릭  정확도 증가');
   }
-if(message.content === 'k!요요 트레이서 궁') {
+    if(message.content === 'k!요요 트레이서 궁') {
     message.reply('SOYY1T  ( 궁극기 값 ) KEY 마우스 보조키 (가속도 3) 정확도 증가');
   }
-if(message.content === 'k!요요 솜브라') {
+    if(message.content === 'k!요요 솜브라') {
     message.reply('2AL515  ( 좌클릭 값 ) KEY 마우스 좌클릭 ( 가속도 3.4 ) 정확도 증가');
   }
-if(message.content === '!k요요 애쉬') {
+    if(message.content === 'k!요요 애쉬') {
     message.reply('7KXYTE  ( 좌클릭 값 ) KEY 마우스 좌클릭 ( 가속도 2.7 ) 정확도 증가');
   }
-if(message.content === 'k!요요 시메트라') {
+   if(message.content === 'k!요요 시메트라') {
     message.reply('N5Y891  ( 좌클릭 값 ) KEY 마우스 좌클릭 정확도 증가');
   }
-if(message.content === 'k!요요 위도우') {
+    if(message.content === 'k!요요 위도우') {
     message.reply('OOUR38  ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 0.5 ) 정확도 증가');
   }
-if(message.content === 'c1') {
-    setColor('#fa26a0');
+   if(message.content === 'k!요요 바스티온') {
+    message.reply('UAS6AS  ( 좌클릭 값 ) KEY 마우스 보조키  정확도 증가');
   }
-if(message.content === 'c2') {
-    setColor('#05dfd7');
-  }
-if(message.content === 'c3') {
-    setColor('#05dfd7');
-  }
-if(message.content === 'k!톰 칸토') {
+   if(message.content === 'k!톰 칸토 목록') {
     message.reply('```DIFF\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌\n```\n```DIFF\n- 맥크리 좌 / 메이 우 / 바스 좌\n```\n```MD\n# 솔저 좌,우 / 시메 좌, 시메트라 좌\n```\n```CS\n# 애쉬 좌 / 에코 좌,우 / 정크 좌\n```\n```FIX\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌 \n```');
+  }
+
+  if(message.content == 'k!help') {
+    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+    let commandList = [
+      {name: 'k!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
+      {name: 'k!톰 (영웅)', desc: '입력한 영웅의 칸토 값을 봅니다'},
+    ];
+    
+    let commandStr = '';
+    let embed = new Discord.RichEmbed()
+      .setAuthor('KANTO BOT 도움말', helpImg)
+      .setColor('#186de6')
+      .setFooter(`KANTO BOT`)
+      .setTimestamp()
+    
+    commandList.forEach(x => {
+      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+    });
+
+    embed.addField('Commands: ', commandStr);
+
+    message.channel.send(embed)
   }
 
   if(message.content == 'k!톰 칸토 목록') {
