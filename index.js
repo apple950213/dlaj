@@ -8,7 +8,7 @@ client.on('ready', () => {
 
 client.on('message', (message) => {
   if(message.content === '!톰 겐지 우') {
-    message.reply('```diff + 46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값```');
+    message.reply('```diff\n+ 46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값```');
   }
 if(message.content === '!톰 겐지 좌') {
     message.reply('7R8LDX ( 좌클 값 ) KEY 마우스 보조키 ( 가속도 3.3 ) 좌클릭 정확도 증가');
@@ -122,6 +122,30 @@ if(message.content == '!help') {
     let embed = new Discord.RichEmbed()
       .setAuthor('KANTO BOT 도움말', helpImg)
       .setColor('#186de6')
+      .setFooter(`KANTO BOT`)
+      .setTimestamp()
+    
+    commandList.forEach(x => {
+      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+    });
+
+    embed.addField('Commands: ', commandStr);
+
+    message.channel.send(embed)
+  }
+if(message.content == '!톰 칸토 목록') {
+    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+    let commandList = [
+      {desc: '```diff\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌톰님 칸토값 목록을 봅니다```'},
+      {desc: '```diff\n- 맥크리 좌 / 메이 우 / 바스 좌'},
+      {desc: '```md\n# 솔저 좌,우 / 시메 좌, 시메트라 좌```'},
+      {desc: '```cs\n# 애쉬 좌 / 에코 좌,우 / 정크 좌```'},
+      {desc: '```fix\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌```'},
+    ];
+    let commandStr = '';
+    let embed = new Discord.RichEmbed()
+      .setAuthor('TOM KANTO 값 목록', helpImg)
+      .setColor('#1DDB16')
       .setFooter(`KANTO BOT`)
       .setTimestamp()
     
