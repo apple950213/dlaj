@@ -135,19 +135,6 @@ if(message.content === 'k!톰 칸토') {
 
     message.channel.send(embed)
   }
-  if(message.content.startsWith('!야')) {
-    let arr = [
-      '왜',
-      '뭐',
-      '뭠마',
-    ]
-    let min = 0;
-    let max = arr.length;
-    let index = parseInt(Math.random() * (max - min) + min);
-    return message.reply(`${arr[index]}가 나왔습니다.`);
-  }
-
-
 
   if(message.content.startsWith('!전체공지')) {
     if(checkPermission(message)) return
