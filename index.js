@@ -1,16 +1,34 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : "";
-const welcomeChannelName = "명령어채널";
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '엄청난 일을' }, status: 'online' })
+  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
+
+  let state_list = [
+    'KANTO BOT',
+    '사과 아들',
+    '칸토 값 찾는 봇',
+  ]
+  let state_list_index = 1;
+  let change_delay = 2000; // 이건 초입니당. 1000이 1초입니당.
+
+  function changeState() {
+    setTimeout(() => {
+      // console.log( '상태 변경 -> ', state_list[state_list_index] );
+      client.user.setPresence({ game: { name: state_list[state_list_index] }, status: 'online' })
+      state_list_index += 1;
+      if(state_list_index >= state_list.length) {
+        state_list_index = 0;
+      }
+      changeState()
+    }, change_delay);
+  }
+
+  // changeState();
 });
 
 client.on('message', (message) => {
-  const guild = member.guild;
-  const newUser = member.user;
-  const welcomeChannel = guild.channels.find(channel => channel.name == welcomeChannelName);
   if(message.content === 'k!톰 겐지') {
     message.reply('```diff\n+ 46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값```');
   }
