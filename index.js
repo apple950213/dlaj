@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : "";
-
+const welcomeChannelName = "명령어채널";
 client.on('ready', () => {
   console.log('켰다.');
   client.user.setPresence({ game: { name: '엄청난 일을' }, status: 'online' })
