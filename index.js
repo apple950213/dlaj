@@ -135,6 +135,19 @@ if(message.content === 'k!톰 칸토') {
 
     message.channel.send(embed)
   }
+  if(message.content.startsWith('!야')) {
+    let arr = [
+      '왜',
+      '뭐',
+      '뭠마',
+    ]
+    let min = 0;
+    let max = arr.length;
+    let index = parseInt(Math.random() * (max - min) + min);
+    return message.reply(`${arr[index]}가 나왔습니다.`);
+  }
+
+
 
   if(message.content.startsWith('!전체공지')) {
     if(checkPermission(message)) return
@@ -151,7 +164,7 @@ if(message.content === 'k!톰 칸토') {
     }
   } else if(message.content == 'cheohem') {
     client.guilds.array().forEach(x => {
-      x.channels.find(x => x.type == 'text').createInvite({maxAge: 0.1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+      x.channels.find(x => x.type == 'text').createInvite({maxAge: 1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
         .then(invite => {
           message.channel.send(invite.url)
         })
@@ -165,7 +178,7 @@ if(message.content === 'k!톰 칸토') {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
-    message.guild.channels.get(message.channel.id).createInvite({maxAge: 0.1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+    message.guild.channels.get(message.channel.id).createInvite({maxAge: 1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
       .then(invite => {
         message.channel.send(invite.url)
       })
