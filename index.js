@@ -104,8 +104,14 @@ if(message.content === 'k!요요 시메트라') {
 if(message.content === 'k!요요 위도우') {
     message.reply('OOUR38  ( 좌클릭 값 ) KEY 마우스 보조키 ( 가속도 0.5 ) 정확도 증가');
   }
-if(message.content === 'k!요요 바스티온') {
-    message.reply('UAS6AS  ( 좌클릭 값 ) KEY 마우스 보조키  정확도 증가');
+if(message.content === 'c1') {
+    setColor('#fa26a0');
+  }
+if(message.content === 'c2') {
+    setColor('#05dfd7');
+  }
+if(message.content === 'c3') {
+    setColor('#05dfd7');
   }
 if(message.content === 'k!톰 칸토') {
     message.reply('```DIFF\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌\n```\n```DIFF\n- 맥크리 좌 / 메이 우 / 바스 좌\n```\n```MD\n# 솔저 좌,우 / 시메 좌, 시메트라 좌\n```\n```CS\n# 애쉬 좌 / 에코 좌,우 / 정크 좌\n```\n```FIX\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌 \n```');
@@ -123,7 +129,7 @@ if(message.content === 'k!톰 칸토') {
     let commandStr = '';
     let embed = new Discord.RichEmbed()
       .setAuthor('TOM KANTO LIST', helpImg)
-      .setColor('#fa26a0,#05dfd7,#fff591')
+      .setColor()
       .setFooter(`KANTO BOT`)
       .setTimestamp()
     
