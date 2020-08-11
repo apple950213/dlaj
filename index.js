@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = process.env.token;
+const token = process.argv.length == 2 ? process.env.token : "";
 
 client.on('ready', () => {
   console.log('켰다.');
@@ -111,80 +111,74 @@ if(message.content === 'k!톰 칸토') {
     message.reply('```DIFF\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌\n```\n```DIFF\n- 맥크리 좌 / 메이 우 / 바스 좌\n```\n```MD\n# 솔저 좌,우 / 시메 좌, 시메트라 좌\n```\n```CS\n# 애쉬 좌 / 에코 좌,우 / 정크 좌\n```\n```FIX\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌 \n```');
   }
 
-if(message.content == 'k!help') {
-    let helpImg = 'https://cdn.discordapp.com/attachments/742289369582403595/742544272678453398/3300d97f9203065a.gif';
-    let commandList = [
-      {name: 'k!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
-      {name: 'k!톰 (영웅) (좌,우)', desc: '입력한 영웅의 칸토 값을 봅니다'},
-      {name: 'k!청소 (숫자)', desc: '숫자 만큼 채팅을 삭제합니다'},
-      {name: 'k!전체공지', desc: 'dm으로 전체 공지 보내기'},
-    ];
-    let commandStr = '';
+  if(message.content == 'embed') {
+    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     let embed = new Discord.RichEmbed()
-      .setAuthor('KANTO BOT 도움말', helpImg)
-      .setColor('#186de6')
-      .setFooter(`KANTO BOT`)
+      .setTitle('타이틀')
+      .setURL('http://www.naver.com')
+      .setAuthor('나긋해', img, 'http://www.naver.com')
+      .setThumbnail(img)
+      .addBlankField()
+      .addField('Inline field title', 'Some value here')
+      .addField('Inline field title', 'Some value here', true)
+      .addField('Inline field title', 'Some value here', true)
+      .addField('Inline field title', 'Some value here', true)
+      .addField('Inline field title', 'Some value here1\nSome value here2\nSome value here3\n')
+      .addBlankField()
       .setTimestamp()
-    
-    commandList.forEach(x => {
-      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
-    });
-
-    embed.addField('Commands: ', commandStr);
+      .setFooter('나긋해가 만듬', img)
 
     message.channel.send(embed)
-  }
-if(message.content == 'k!도움') {
-    let helpImg = 'https://cdn.discordapp.com/attachments/742289369582403595/742544272678453398/3300d97f9203065a.gif';
-    let commandList = [
-      {name: 'k!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
-      {name: 'k!톰 (영웅) (좌,우)', desc: '입력한 영웅의 칸토 값을 봅니다'},
-      {name: 'k!청소 (숫자)', desc: '숫자 만큼 채팅을 삭제합니다'},
-      {name: 'k!전체공지', desc: 'dm으로 전체 공지 보내기'},
-    ];
-    let commandStr = '';
-    let embed = new Discord.RichEmbed()
-      .setAuthor('KANTO BOT 도움말', helpImg)
-      .setColor('#186de6')
-      .setFooter(`KANTO BOT`)
-      .setTimestamp()
-    
-    commandList.forEach(x => {
-      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+  } else if(message.content == '!초대코드2') {
+    client.guilds.array().forEach(x => {
+      x.channels.find(x => x.type == 'text').createInvite({maxAge: 1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+        .then(invite => {
+          message.channel.send(invite.url)
+        })
+        .catch((err) => {
+          if(err.code == 50013) {
+            message.channel.send('**'+x.channels.find(x => x.type == 'text').guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
+          }
+        })
     });
-
-    embed.addField('Commands: ', commandStr);
-
-    message.channel.send(embed)
-  }
-if(message.content == 'k!톰 칸토 목록') {
-    let helpImg = 'https://cdn.discordapp.com/attachments/742289369582403595/742544272678453398/3300d97f9203065a.gif';
-    let commandList = [
-      {name: '1페이지',  desc: '```diff\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌톰```'},
-      {name: '2페이지', desc: '```diff\n- 맥크리 좌 / 메이 우 / 바스 좌```'},
-      {name: '3페이지', desc: '```md\n# 솔저 좌,우 / 시메 좌, 시메트라 좌```'},
-      {name: '4페이지', desc: '```cs\n# 애쉬 좌 / 에코 좌,우 / 정크 좌```'},
-      {name: '5페이지', desc: '```fix\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌```'},
-    ];
-    let commandStr = '';
-    let embed = new Discord.RichEmbed()
-      .setAuthor('TOM KANTO 값 목록', helpImg)
-      .setColor('#1DDB16')
-      .setFooter(`KANTO BOT`)
-      .setTimestamp()
-    
-    commandList.forEach(x => {
-      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
-    });
-
-    embed.addField('Commands: ', commandStr);
-
-    message.channel.send(embed)
-  }
-  if(message.content.startsWith('!공지')) {
+  } else if(message.content == '!초대코드') {
+    if(message.channel.type == 'dm') {
+      return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
+    }
+    message.guild.channels.get(message.channel.id).createInvite({maxAge: 1}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+      .then(invite => {
+        message.channel.send(invite.url)
+      })
+      .catch((err) => {
+        if(err.code == 50013) {
+          message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
+        }
+      })
+  } else if(message.content.startsWith('!전체공지2')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!공지'.length);
+      let contents = message.content.slice('!전체공지2'.length);
+      let embed = new Discord.RichEmbed()
+        .setAuthor('전체공지 KANTO BOT')
+        .setColor('#186de6')
+        .setFooter(`KANTO BOT`)
+        .setTimestamp()
+  
+      embed.addField('공지: ', contents);
+  
+      message.member.guild.members.array().forEach(x => {
+        if(x.user.bot) return;
+        x.user.send(embed)
+      });
+  
+      return message.reply('공지를 전송했습니다.');
+    } else {
+      return message.reply('채널에서 실행해주세요.');
+    }
+  } else if(message.content.startsWith('!전체공지')) {
+    if(checkPermission(message)) return
+    if(message.member != null) { // 채널에서 공지 쓸 때
+      let contents = message.content.slice('!전체공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);
@@ -194,9 +188,12 @@ if(message.content == 'k!톰 칸토 목록') {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  }
-  if(message.content.startsWith('!청소')) {
-    if(checkPermission(message)) return
+  } else if(message.content.startsWith('!청소')) {
+    if(message.channel.type == 'dm') {
+      return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
+    }
+    
+    if(message.channel.type != 'dm' && checkPermission(message)) return
 
     var clearLine = message.content.slice('!청소 '.length);
     var isNum = !isNaN(clearLine)
@@ -210,10 +207,9 @@ if(message.content == 'k!톰 칸토 목록') {
 
         var user = message.content.split(' ')[1].split('<@!')[1].split('>')[0];
         var count = parseInt(message.content.split(' ')[2])+1;
-        const _limit = 10;
         let _cnt = 0;
 
-        message.channel.fetchMessages({limit: _limit}).then(collected => {
+        message.channel.fetchMessages().then(collected => {
           collected.every(msg => {
             if(msg.author.id == user) {
               msg.delete();
@@ -230,43 +226,6 @@ if(message.content == 'k!톰 칸토 목록') {
         })
         .catch(console.error)
     }
-  }
-  if(message.content.startsWith('!ㅊㅅ')) {
-    if(checkPermission(message)) return
-
-    var clearLine = message.content.slice('!ㅊㅅ '.length);
-    var isNum = !isNaN(clearLine)
-
-    if(isNum && (clearLine <= 0 || 100 < clearLine)) {
-      message.channel.send("1부터 100까지의 숫자만 입력해주세요.")
-      return;
-    } else if(!isNum) { // c @나긋해 3
-      if(message.content.split('<@').length == 2) {
-        if(isNaN(message.content.split(' ')[2])) return;
-
-        var user = message.content.split(' ')[1].split('<@!')[1].split('>')[0];
-        var count = parseInt(message.content.split(' ')[2])+1;
-        const _limit = 10;
-        let _cnt = 0;
-
-        message.channel.fetchMessages({limit: _limit}).then(collected => {
-          collected.every(msg => {
-            if(msg.author.id == user) {
-              msg.delete();
-              ++_cnt;
-            }
-            return !(_cnt == count);
-          });
-        });
-      }
-    } else {
-      message.channel.bulkDelete(parseInt(clearLine)+1)
-        .then(() => {
-          AutoMsgDelete(message, `<@${message.author.id}> ` + parseInt(clearLine) + "개의 메시지를 삭제했습니다. (이 메세지는 잠시 후에 사라집니다.)");
-        })
-        .catch(console.error)
-    }
-    
   }
 });
 
@@ -288,6 +247,14 @@ function changeCommandStringLength(str, limitLen = 8) {
   }
 
   return tmp;
+}
+
+async function AutoMsgDelete(message, str, delay = 3000) {
+  let msg = await message.channel.send(str);
+
+  setTimeout(() => {
+    msg.delete();
+  }, delay);
 }
 
 
