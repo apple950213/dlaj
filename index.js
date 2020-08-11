@@ -106,7 +106,7 @@ if(message.content === '!요요 위도우') {
 if(message.content === '!요요 바스티온') {
     message.reply('UAS6AS  ( 좌클릭 값 ) KEY 마우스 보조키  정확도 증가');
   }
-if(message.content === '!톰 칸토 목록') {
+if(message.content === '!톰 칸토') {
     message.reply('```DIFF\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌\n```\n```DIFF\n- 맥크리 좌 / 메이 우 / 바스 좌\n```\n```MD\n# 솔저 좌,우 / 시메 좌, 시메트라 좌\n```\n```CS\n# 애쉬 좌 / 에코 좌,우 / 정크 좌\n```\n```FIX\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌 \n```');
   }
 
@@ -133,14 +133,37 @@ if(message.content == '!help') {
 
     message.channel.send(embed)
   }
+if(message.content == '!도움') {
+    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+    let commandList = [
+      {name: '!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
+      {name: '!톰 (영웅) (좌,우)', desc: '입력한 영웅의 칸토 값을 봅니다'},
+      {name: '!청소 (숫자)', desc: '숫자 만큼 채팅을 삭제합니다'},
+      {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
+    ];
+    let commandStr = '';
+    let embed = new Discord.RichEmbed()
+      .setAuthor('KANTO BOT 도움말', helpImg)
+      .setColor('#186de6')
+      .setFooter(`KANTO BOT`)
+      .setTimestamp()
+    
+    commandList.forEach(x => {
+      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+    });
+
+    embed.addField('Commands: ', commandStr);
+
+    message.channel.send(embed)
+  }
 if(message.content == '!톰 칸토 목록') {
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
     let commandList = [
-      {desc: '```diff\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌톰님 칸토값 목록을 봅니다```'},
-      {desc: '```diff\n- 맥크리 좌 / 메이 우 / 바스 좌'},
-      {desc: '```md\n# 솔저 좌,우 / 시메 좌, 시메트라 좌```'},
-      {desc: '```cs\n# 애쉬 좌 / 에코 좌,우 / 정크 좌```'},
-      {desc: '```fix\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌```'},
+      {name: '1P', desc: '```diff\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌톰```'},
+      {name: '2P', desc: '```diff\n- 맥크리 좌 / 메이 우 / 바스 좌```'},
+      {name: '3P', desc: '```md\n# 솔저 좌,우 / 시메 좌, 시메트라 좌```'},
+      {name: '4P', desc: '```cs\n# 애쉬 좌 / 에코 좌,우 / 정크 좌```'},
+      {name: '5P', desc: '```fix\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌```'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
@@ -157,10 +180,10 @@ if(message.content == '!톰 칸토 목록') {
 
     message.channel.send(embed)
   }
-  if(message.content.startsWith('!전체공지')) {
+  if(message.content.startsWith('!공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지'.length);
+      let contents = message.content.slice('!공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);
