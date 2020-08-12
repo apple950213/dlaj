@@ -1,17 +1,23 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : "";
+const moment = require("moment");
+require("moment-duration-format");
+const momenttz = require('moment-timezone');
+const MessageAdd = require('./db/message_add.js')
+const adminUserId = 617704646646956042;
+
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
+  client.user.setPresence({ game: { name: 'k!help를 쳐보세요.' }, status: 'online' })
 
   let state_list = [
-    'KANTO BOT',
-    '사과 아들',
-    '칸토 값 찾는 봇',
+    'k!help를 쳐보세요.',
+    '사과아들',
+    '봇 문제가있을시 봇한태 dm 주세요',
   ]
   let state_list_index = 1;
-  let change_delay = 2000; // 이건 초입니당. 1000이 1초입니당.
+  let change_delay = 3000; // 이건 초입니당. 1000이 1초입니당.
 
   function changeState() {
     setTimeout(() => {
@@ -28,12 +34,28 @@ client.on('ready', () => {
   // changeState();
 });
 
+client.on("messageUpdate", (message) => {
+  MessageSave(message, true)
+});
+
 client.on('message', (message) => {
+  MessageSave(message)
+  if(message.author.bot) return;
+
+  if(message.channel.type == 'dm') {
+    if(message.author.id == adminUserId) return;
+
+    /* not use embed */
+    let msg = message.author+'이(가) 메세지를 보냈습니다.\n'+message.content;
+    client.users.find(x => x.id == adminUserId).send(msg)
+  }
+
+  
   if(message.content === 'k!톰 겐지') {
-    message.reply('```diff\n+ 46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값```');
+    message.reply('**```diff\n+ 46123V ( 우클 값 ) KEY 마우스 보조키 ( 가속도 2.5 ) 기존 값```**');
   }
   if(message.content === 'k!톰 겐지') {
-    message.reply('7R8LDX ( 좌클 값 ) KEY 마우스 보조키 ( 가속도 3.3 ) 좌클릭 정확도 증가');
+    message.reply('**```diff\n7R8LDX ( 좌클 값 ) KEY 마우스 보조키 ( 가속도 3.3 ) 좌클릭 정확도 증가```**');
   }
   if(message.content === 'k!톰 리퍼') {
     message.reply('O5ULAA ( 좌클릭 값 ) KEY 마우스 좌클');
@@ -128,15 +150,39 @@ client.on('message', (message) => {
   if(message.content === 'k!요요 바스티온') {
     message.reply('UAS6AS  ( 좌클릭 값 ) KEY 마우스 보조키  정확도 증가');
   }
-  if(message.content === 'k!톰 칸토 목록') {
+  if(message.content === 'k!톰 칸토ㅋ') {
     message.reply('```DIFF\n+ 겐지 좌,우 / 리퍼 좌 / 맥 좌\n```\n```DIFF\n- 맥크리 좌 / 메이 우 / 바스 좌\n```\n```MD\n# 솔저 좌,우 / 시메 좌, 시메트라 좌\n```\n```CS\n# 애쉬 좌 / 에코 좌,우 / 정크 좌\n```\n```FIX\n# 트레 좌,궁 / 트레이서 좌,궁 / 파라 좌 / 한조 좌 \n```');
   }
 
+
   if(message.content == 'k!help') {
-    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+    let helpImg = 'https://media.discordapp.net/attachments/742289369582403595/742544272678453398/3300d97f9203065a.gif';
     let commandList = [
       {name: 'k!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
       {name: 'k!톰 (영웅)', desc: '입력한 영웅의 칸토 값을 봅니다'},
+    ];
+    
+    let commandStr = '';
+    let embed = new Discord.RichEmbed()
+      .setAuthor('KANTO BOT 도움말', helpImg)
+      .setColor('#186de6')
+      .setFooter(`KANTO BOT`)
+      .setTimestamp()
+    
+    commandList.forEach(x => {
+      commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+    });
+
+    embed.addField('Commands: ', commandStr);
+
+    message.channel.send(embed)
+  }
+  if(message.content == 'k!도움') {
+    let helpImg = 'https://media.discordapp.net/attachments/742289369582403595/742544272678453398/3300d97f9203065a.gif';
+    let commandList = [
+      {name: 'k!톰 칸토 목록', desc: '톰님 칸토값 목록을 봅니다'},
+      {name: 'k!톰 (영웅)', desc: '입력한 영웅의 칸토 값을 봅니다 톰님 버전'},
+      {name: 'k!요요 (영웅)', desc: '입력한 영웅의 칸토 값을 봅니다 요요님 버전'},
     ];
     
     let commandStr = '';
@@ -180,10 +226,10 @@ client.on('message', (message) => {
     message.channel.send(embed)
   }
 
-  if(message.content.startsWith('!전체공지')) {
+  if(message.content.startsWith('!전체공지1')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지'.length);
+      let contents = message.content.slice('!전체공지1'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);
@@ -233,19 +279,6 @@ client.on('message', (message) => {
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(embed)
-      });
-  
-      return message.reply('공지를 전송했습니다.');
-    } else {
-      return message.reply('채널에서 실행해주세요.');
-    }
-  } else if(message.content.startsWith('!전체공지')) {
-    if(checkPermission(message)) return
-    if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지'.length);
-      message.member.guild.members.array().forEach(x => {
-        if(x.user.bot) return;
-        x.user.send(`<@${message.author.id}> ${contents}`);
       });
   
       return message.reply('공지를 전송했습니다.');
